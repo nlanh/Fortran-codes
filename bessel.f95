@@ -5,15 +5,17 @@ implicit none
 real*16 x,besj,xmax,step
 
 integer*16 i,j,n,s,nmax,ni,fac1,fac2
-open(unit=1, file='besj.dat') 
+open(unit=1, file='besj.dat')
+open(unit=2, file='frho.dat')
+open(unit=3, file='frho.dat')
 
-print*, 'Nhap n'
+print*, 'Enter n (order of bessel function, hint: 0)'
 read*, n
-print*, 'Nhap nmax'
+print*, 'Enter nmax (infinity index for series, hint: 20)'
 read*, nmax
-print*, 'Nhap xmax'
+print*, 'Enter xmax (maximum range of x for output, hint: 10)'
 read*, xmax
-print*, 'Nhap step'
+print*, 'Enter step (step of x)'
 read*, step
 
 ni = int((xmax+0.00000001)/step)
@@ -39,7 +41,7 @@ do i=0,ni
 		end if
 		besj = besj + (x/2)**(n+2*s)*(-1)**s/(fac1*fac2)
 	end do
-	write(1,'((f8.2),(f20.4))'), x, besj
+	write(1,'((f8.2),(f20.4))') x, besj
 	
 end do
 
