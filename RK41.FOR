@@ -1,12 +1,11 @@
 c	  Runge Kutta cho phuong trinh vi phan cap mot
-c
-      PROGRAM RK1
+      PROGRAM RK41
       IMPLICIT none
       
 c     nsteps: so diem, tstep: buoc chia, y: gia tri y(0)
       REAL*8 t, y, tstep
       INTEGER j,nsteps
-      nsteps = 5
+      nsteps = 100
       tstep = 0.1
       y = 1.0
 
@@ -32,9 +31,9 @@ c     Chuong trinh con cho Runge-Kutta bac bon
       REAL*8 k1, k2, k3, k4
       h = tstep/2.0
       k1 = tstep * DERIV(t, y)
-      k2 = tstep * DERIV(t+h, y+k1/2.0)
-      k3 = tstep * DERIV(t+h, y+k2/2.0)
-      k4 = tstep * DERIV(t+tstep, y+k3)
+      k2 = tstep * DERIV(t + h, y + k1/2.0)
+      k3 = tstep * DERIV(t + h, y + k2/2.0)
+      k4 = tstep * DERIV(t + tstep, y + k3)
       y = y + (k1 + (2.*(k2 + k3)) + k4)/6.0
       RETURN
       END
@@ -45,7 +44,7 @@ c Ham so f(x,y) = y'
 
       REAL*8 DERIV, t, temp
 
-      DERIV=t+temp
+      DERIV = t + temp
       
       RETURN
       END
