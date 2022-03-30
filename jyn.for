@@ -6,7 +6,7 @@
       dimension x(10000),ayn(10000),dyn(10000),ajn(10000),djn(10000)
       
       open(unit=1, file='y.dat') 
-      open(unit=2, file='input.dat')
+      open(unit=2, file='yjn.inp')
 
 !print*, 'Nhap n'
       read(2,*) n
